@@ -1,0 +1,24 @@
+{
+  "name": "cob-2022",
+  "version": "1.0.0",
+  "description": "Cougar Optics Board for the 2022 Rapid React FRC Season",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CougarProgramming623/COB-2022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CougarProgramming623/COB-2022/issues"
+  },
+  "homepage": "https://github.com/CougarProgramming623/COB-2022#readme",
+  "devDependencies": {
+    "electron": "^16.0.7",
+    "wpilib-nt-client": "^1.7.2"
+  }
+}
