@@ -1,0 +1,13 @@
+#navX-reset{
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+    background-color: red;
+}
+
+#drive-mode{
+    text-align: center;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 30px;
+}
