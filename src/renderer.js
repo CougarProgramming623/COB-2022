@@ -1,6 +1,6 @@
 console.log("Started renderer.js")
 
-ipc.send('connect', "10.6.23.2"); // connect to localhost
+ipc.send('connect', "localhost"); // connect to localhost -- 10.6.23.2
 
 const COB = {
     set: function(cobKey, value) {
@@ -26,7 +26,8 @@ const COB_KEY = {
     bar: "/COB/bar",
     navXReset: "/COB/navXReset",
     robotAngle: "/COB/robotAngle",
-    driveMode: "/COB/driveMode"
+    driveMode: "/COB/driveMode",
+    flywheelRPM: "/COB/flywheelRPM"
 } // put all the keys here, and match the schema with the COB.h file in the codebase
 
 
@@ -34,13 +35,18 @@ const COB_KEY = {
 /*COB.setListener(COB_KEY.foo, value => { document.getElementById("foo-value").innerText = value; })
 COB.setListener(COB_KEY.bar, value => { document.getElementById("bar-value").innerText = value; })*/
 
-COB.setListener(COB_KEY.robotAngle, value => { document.getElementById("navX-reset").style.transform = 'rotate(' + value + 'deg)'; })
-COB.setListener(COB_KEY.driveMode, value => {document.getElementById("drive-mode").innerText = value;}) 
+COB.setListener(COB_KEY.robotAngle, value => { 
+    document.getElementById("navX-reset").style.transform = 'rotate(' + value + 'deg)'; 
+})
+COB.setListener(COB_KEY.flywheelRPM, value => { 
+    document.getElementById("flywheelRPM").innerHTML = value + " RPM"; 
+})
 
 function initAll(){
     COB.set(COB_KEY.navXReset, false);
     COB.set(COB_KEY.robotAngle, 0);
     COB.set(COB_KEY.driveMode, 'N/A');
+    COB.set(COB_KEY.flywheelRPM, 0);
 }
 
 
@@ -52,6 +58,7 @@ window.onload = () => { // this runs after the DOM has loaded
     initAll();
 
     document.getElementById("navX-reset").onclick = function() {
+        COB.set(COB_KEY.robotAngle, 0.00);
         COB.set(COB_KEY.navXReset, true);
     }
 }
