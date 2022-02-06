@@ -1,6 +1,6 @@
 console.log("Started renderer.js")
 
-ipc.send('connect', "10.6.23.2"); // connect to localhost
+ipc.send('connect', "localhost"); // connect to localhost
 
 const COB = {
     set: function(cobKey, value) {
@@ -19,39 +19,18 @@ const COB = {
 NetworkTables.addRobotConnectionListener((con) => { console.log("connected", con) }, false);
 
 
-// rapid react specific code follows
-
 const COB_KEY = {
-    foo: "/COB/foo",
-    bar: "/COB/bar",
-    navXReset: "/COB/navXReset",
-    robotAngle: "/COB/robotAngle",
-    driveMode: "/COB/driveMode"
 } // put all the keys here, and match the schema with the COB.h file in the codebase
 
 
-
-/*COB.setListener(COB_KEY.foo, value => { document.getElementById("foo-value").innerText = value; })
-COB.setListener(COB_KEY.bar, value => { document.getElementById("bar-value").innerText = value; })*/
-
-COB.setListener(COB_KEY.robotAngle, value => { document.getElementById("navX-reset").style.transform = 'rotate(' + value + 'deg)'; })
-COB.setListener(COB_KEY.driveMode, value => {document.getElementById("drive-mode").innerText = value;}) 
-
 function initAll(){
-    COB.set(COB_KEY.navXReset, false);
-    COB.set(COB_KEY.robotAngle, 0);
-    COB.set(COB_KEY.driveMode, 'N/A');
+    document.getElementById("compile").onclick = compileCPL;
 }
 
 
 window.onload = () => { // this runs after the DOM has loaded
-    /*document.getElementById("incr-foo").onclick = function() {
-        COB.set(COB_KEY.foo, COB.get(COB_KEY.foo, 0) + 1);
-    }*/
+
 
     initAll();
 
-    document.getElementById("navX-reset").onclick = function() {
-        COB.set(COB_KEY.navXReset, true);
-    }
 }
