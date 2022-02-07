@@ -7,12 +7,6 @@ body, html {
     width: min-content;
 }
 
-#cpl-input {
-    flex-grow: 1;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
 #cpl {
     display: flex;
     flex-direction: row;
@@ -25,6 +19,8 @@ body, html {
 #cpl * * {
     margin: 0px;
 }
+
+/* BUTTONS */
 #button-pane {
     padding-top: 10px;
     width: 150px;
@@ -33,6 +29,7 @@ body, html {
 }
 #button-pane #error-code {
     width: 150px;
+
     background-color: rgb(255, 213, 213);
     border-radius: 5px;
 }
@@ -40,6 +37,40 @@ body, html {
     margin-bottom: 10px;
 }
 
+/* LEFT PANE */
+
+#left-pane {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#left-pane * {
+    margin-bottom: 10px;
+}
+#left-pane textarea {
+    width: 100%;
+    flex-grow: 1;
+}
+/* FIELD */
+#field {
+    display: inline-block;
+    max-height: 200px;
+}
+#field-img {
+    position: relative;
+    max-height: 100%;
+    max-width: 100%;
+}
+#robot {
+    height: 70px;
+    position: absolute;
+}
+
+/* AST */
 
 #ast {
     width: max-content;
