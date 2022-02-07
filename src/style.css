@@ -3,6 +3,10 @@ body, html {
     margin: 0px;
 }
 
+#error-code {
+    width: min-content;
+}
+
 #cpl-input {
     flex-grow: 1;
     margin-left: 10px;
@@ -23,8 +27,14 @@ body, html {
 }
 #button-pane {
     padding-top: 10px;
+    width: 150px;
     display: flex;
     flex-direction: column;
+}
+#button-pane #error-code {
+    width: 150px;
+    background-color: rgb(255, 213, 213);
+    border-radius: 5px;
 }
 #button-pane button {
     margin-bottom: 10px;

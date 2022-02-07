@@ -25,6 +25,7 @@ const COB_KEY = {
 
 function initAll(){
     document.getElementById("compile").onclick = compileCPL;
+    document.getElementById("cpl-input").addEventListener("input", compileCPL);
     document.getElementById("show-ast").onclick = function() {
         document.getElementById("ast").hidden = !document.getElementById("ast").hidden;
     }

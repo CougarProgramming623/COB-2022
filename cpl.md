@@ -64,6 +64,7 @@ Wait(2s) // lets alliance get out of the way
 parRace( // the first one to end, ends all of them
   Intake(), // never ends
   MoveTo(<rel 3m>), // trailing commas allowed
+  Wait(3s),
 )
 Turn(180rel%)
 TurnToTarget()
@@ -80,7 +81,7 @@ Tokens, see table in cpl.js
 
 AST
 
-```hs
+```js
 expr  : number
       | distance
       | degree

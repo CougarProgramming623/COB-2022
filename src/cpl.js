@@ -34,9 +34,10 @@ function lex() {
     let pos = -1;
     for(line0 of lines) {
         let line = line0;
+        let commentOffset = 0;
         if(line.indexOf("//") > -1) {
             line = line0.substring(0, line0.indexOf("//"));
-            pos+= line0.substring(line0.indexOf("//")).length;
+            commentOffset = line0.substring(line0.indexOf("//")).length;
         }
         let col = 0;
         row++;
@@ -56,7 +57,7 @@ function lex() {
                 if(match != null) break;
             }
             if(match == null) {
-                alert("Error on row " + row + " col " + col + ", couldn't find token that matches");
+                throw "Error on row " + row + " col " + col + ", couldn't find token that matches";
                 return null;
             }
             match = match[0]
@@ -73,6 +74,7 @@ function lex() {
             line = line.substring(match.length);
             tokens.push(token)
         }
+        pos += commentOffset;
     }
     return tokens;
 }
@@ -81,8 +83,14 @@ function lex() {
 function parse(tokens) {
     let i = 0;
     const tokenQueue = {
-        pop: () => { return tokens[i++]; },
-        peek: () => { return tokens[i]; }
+        pop: () => { 
+            if(i >= tokens.length) throw Error("Reached end of file while parsing");
+            return tokens[i++];
+        },
+        peek: () => {
+            if(i >= tokens.length) throw Error("Reached end of file while parsing");
+            return tokens[i];
+        }
     }
     const exprs = [];
     while(i < tokens.length) {
@@ -92,16 +100,26 @@ function parse(tokens) {
 }
 
 function compileCPL() {
-    const tokens = lex();
-    console.log(tokens)
-    const ast = parse(tokens);
-    console.log(ast);
+    const errorNode = document.getElementById("error-code");
+    try {
+        const tokens = lex();
+        console.log(tokens)
+        const ast = parse(tokens);
+        console.log(ast);
 
-    const root = document.getElementById("ast");
-    root.innerHTML = "";
-    for(expr of ast) {
-        root.appendChild(renderNode(expr, 1))
+        const root = document.getElementById("ast");
+        root.innerHTML = "";
+        for(expr of ast) {
+            root.appendChild(renderNode(expr, 1))
+        }
+        errorNode.innerText = "";
+        errorNode.hidden = true;
+    } catch(e) {
+        console.log(e);
+        errorNode.innerText = e;
+        errorNode.hidden = false;
     }
+
 }
 
 function renderNode(expr, depth) {
@@ -250,9 +268,10 @@ function parseE(tokens) {
             return { type: "string", value: top.content.substring(1, top.content.length - 1), 
             pos: top.pos, posEnd: top.posEnd }
     }
-    throw "Can't parse token '" + JSON.stringify(top) + "'"
+    throw Error("Can't parse token on line " + top.row + " column " + top.col + " content\"" + top.content + "\""); 
 }
 
 function assertEq(a, b, token) {
-    if(a !== b) throw "Expected " + b + " but got " + a + " at " + JSON.stringify(token); 
+    if(a !== b) throw Error("Expected " + b + " but got " + a + " at line " + token.row + 
+                            " column " + token.col + " content\"" + token.content + "\""); 
 }
