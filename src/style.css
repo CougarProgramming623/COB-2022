@@ -1,13 +1,75 @@
-#navX-reset{
-    width: 100px;
-    height: 100px;
-    margin: 30px;
-    background-color: red;
+body, html {
+    height: 100%;
+    margin: 0px;
 }
 
-#drive-mode{
-    text-align: center;
-    font-size: larger;
-    font-family: 'Courier New', Courier, monospace;
-    margin: 30px;
+#cpl-input {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#cpl {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+#cpl * {
+    margin-right: 10px;
+}
+#cpl * * {
+    margin: 0px;
+}
+#button-pane {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+#button-pane button {
+    margin-bottom: 10px;
+}
+
+
+#ast {
+    width: max-content;
+    font-family: monospace;
+    padding-top: 10px;
+    overflow-y: scroll;
+}
+
+#ast .expr-node {
+    border: 1px solid #706d93;
+    padding: 5px;
+    margin: 5px;
+}
+.expr-final {
+    background-color: #eed286;
+}
+.expr-depth-1 {
+    background-color: #d2f5d8;
+}
+.expr-depth-2 {
+    background-color: #adf6ba;
+}
+.expr-depth-3 {
+    background-color: #80f395;
+}
+.expr-depth-4 {
+    background-color: #58f375;
+}
+.expr-depth-4 {
+    background-color: #29f14d;
+}
+
+.expr-command {
+    background-color: #e29be2;
+}
+.expr-node.expr-invoke-single-arg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1px;
+    padding-left: 5px;
+    padding-right: 3px;
 }

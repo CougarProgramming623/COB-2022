@@ -10,12 +10,12 @@ We start the language with some of our base scalar values.
 -2.4 // all can be negative
 2.7m, 2.7ft, 2.7in // a distance (always floating)
 5s, 2100ms // a time value, (always floating)
-<relative 2.5m, 8.6m> // a coordinate relative to the robot direction
-<relative 2.5m> // second argument assumed to be zero
-<absolute 7.1m, 5m>  // an absolute value on the field
+<rel 2.5m, 8.6m> // a coordinate relative to the robot direction
+<rel 2.5m> // second argument assumed to be zero
+<abs 7.1m, 5m>  // an absolute value on the field
 "string value" // string constant
-35rel // degrees relative to the robot, 0 being straight forward
-45abs // degrees absolute to the field, 0 being a set angle
+35rel% // degrees relative to the robot, 0 being straight forward
+45abs% // degrees absolute to the field, 0 being a set angle
 ```
 
 One of the biggest questions is if we want to fix the robot location. If it's fixed, our life is easier, and we should have some way of signifying what that location is for the GUI.
@@ -35,17 +35,17 @@ Some more examples
 
 ```go
 Wait(5s) // wait command
-MoveTo(<relative 5m>, 90rel) // drive forward 5m and turn 90 degrees at the same time
+MoveTo(<rel 5m>, 90rel%) // drive forward 5m and turn 90 degrees at the same time
 timeout(500ms,
-  MoveTo(<relative 5m>)
+  MoveTo(<rel 5m>)
 ) // drive forward 5m, timeout after 5 seconds
 Log("foo") // log a string value. The timestamp is also printed (?)
 AlignWithHub()
 Shoot(1)
 Shoot(2) // different timing for shooting 1 verses shooting 2 balls
 
-MoveTo(<absolute Am, Bm>, -90abs)
-MoveTo(<relative -10cm>)            // move to the protected zone
+MoveTo(<abs 10m, 10m>, -90abs%)
+MoveTo(<rel -10cm>)            // move to the protected zone
 TurnToTarget()
 Shoot(2)
 
@@ -53,7 +53,7 @@ timeout(5s, Intake()) // puts down the intake, grabs balls for 5s. Ending the In
 
 par(
   Wait(5s), 
-  MoveTo(<relative 10m>)
+  MoveTo(<rel 10m>)
 ) // parallizes two or more commands. Has variants just like wpilib does
 ```
 
@@ -63,9 +63,9 @@ An example auto might be something like
 Wait(2s) // lets alliance get out of the way
 parRace( // the first one to end, ends all of them
   Intake(), // never ends
-  MoveTo(<relative 3m>), // trailing commas allowed
+  MoveTo(<rel 3m>), // trailing commas allowed
 )
-Turn(180rel)
+Turn(180rel%)
 TurnToTarget()
 Shoot(2)
 ```
@@ -78,7 +78,7 @@ I'm unsure how ownership should work
 
 Tokens, see table in cpl.js
 
-AST:
+AST
 
 ```hs
 expr  : number
