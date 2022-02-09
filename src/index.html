@@ -8,7 +8,10 @@
     <title>Cougar Optics Board</title>
     <script src="./networktables.js"></script>
     <script src="./renderer.js"></script>
-    <script src="./cpl.js"></script>
+    <script src="./cpl/lexer.js"></script>
+    <script src="./cpl/parser.js"></script>
+    <script src="./cpl/ui.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="./style.css"/>
   </head>
   <body>
@@ -16,11 +19,11 @@
     <div id="cpl">
       <div id="left-pane">
         <textarea id="cpl-input"></textarea>
-        <div id="field">
+        <!-- <div id="field">
           <img id="field-img" src="field.png">
           <img id="robot" src="Arrow.png">
           </img>
-        </div>
+        </div> -->
       </div>
       <div id="button-pane">
         <button id="compile">Compile</button>
