@@ -1,6 +1,6 @@
 console.log("Started renderer.js")
 
-ipc.send('connect', "localhost"); // connect to localhost -- 10.6.23.2
+ipc.send('connect', "10.6.23.2"); // connect to localhost -- 10.6.23.2
 
 const COB = {
     set: function(cobKey, value) {
@@ -26,8 +26,8 @@ const COB_KEY = {
     bar: "/COB/bar",
     navXReset: "/COB/navXReset",
     robotAngle: "/COB/robotAngle",
+    flywheelRPM: "/COB/flywheelRPM",
     driveMode: "/COB/driveMode",
-    flywheelRPM: "/COB/flywheelRPM"
 } // put all the keys here, and match the schema with the COB.h file in the codebase
 
 
@@ -41,12 +41,17 @@ COB.setListener(COB_KEY.robotAngle, value => {
 COB.setListener(COB_KEY.flywheelRPM, value => { 
     document.getElementById("flywheelRPM").innerHTML = value + " RPM"; 
 })
+COB.setListener(COB_KEY.driveMode, value => { 
+    document.getElementById("driveMode").innerHTML = value; 
+})
+
+
 
 function initAll(){
     COB.set(COB_KEY.navXReset, false);
     COB.set(COB_KEY.robotAngle, 0);
-    COB.set(COB_KEY.driveMode, 'N/A');
     COB.set(COB_KEY.flywheelRPM, 0);
+    COB.set(COB_KEY.driveMode, 'Robot Oriented');
 }
 
 
