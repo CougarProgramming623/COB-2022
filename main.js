@@ -2,10 +2,23 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const ipc = ipcMain;
 
 let win;
+let screenWidth = 1280;
+let screenHeight = 400;
+
 function createWindow () {
     win = new BrowserWindow({
-      width: 800,
-      height: 600,
+      width:     screenWidth,
+      minWidth:  screenWidth,
+      maxWidth:  screenWidth, 
+
+      height:    screenHeight,
+      minHeight: screenHeight,
+      maxHeight: screenHeight,
+
+      x: 0,
+      y: 0,
+      backgroundColor: "#dfc9de",
+      center: true,
       webPreferences: {
           nodeIntegration: true,
           contextIsolation: false,
