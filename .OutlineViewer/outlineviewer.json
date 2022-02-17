@@ -1,5 +1,16 @@
 {
+  "COB": {
+    "fms": {
+      "open": true
+    },
+    "open": true
+  },
+  "FMSInfo": {
+    "open": true
+  },
   "NetworkTables Settings": {
-    "listenAddress": "10.6.23.2"
+    "listenAddress": "127.0.0.1",
+    "mode": "Client",
+    "serverTeam": "623"
   }
 }
