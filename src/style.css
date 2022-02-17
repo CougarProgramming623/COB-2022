@@ -1,7 +1,7 @@
 div.angle {
     display: inline-block;
     position: fixed;
-    left:50px;
+    left:300px;
     top:20px;
     text-align: center;
 }
@@ -10,10 +10,15 @@ div.angle {
     font-size: 40pt;
 }
 
+#driveMode {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 15pt;
+}
+
 div.flywheel {
     display: inline-block;
     position: fixed;
-    left:300px;
+    left:550px;
     top:20px;
     text-align: center;
 }
@@ -22,15 +27,23 @@ div.flywheel {
     font-size: 40pt;
 }
 
-#driveMode {
-    position: fixed;
-}
 #matchTime {
     position: fixed;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30pt;
+    top: 15px;
+    
 }
+#timer {
+    position: fixed;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 80pt;
+    top: 0px;
+}
+
 #matchPhase {
     position: fixed;
-}
-#matchColor {
-    position: fixed;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20pt;
+    top: 205px;
 }

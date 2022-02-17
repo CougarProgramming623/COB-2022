@@ -43,36 +43,34 @@ COB.setListener(COB_KEY.robotAngle, value => {
 })
 COB.setListener(COB_KEY.flywheelRPM, value => { 
     document.getElementById("flywheelRPM").innerText = value.toString() + " RPM"; 
-    document.getElementById("flywheelDisplay").style.filter = "brightness(" + value + "%)"; 
+    document.getElementById("flywheelDisplay").style.filter = "brightness(" + (value / 120) + "%)"; 
 })
 COB.setListener(COB_KEY.driveMode, value => { 
-    document.getElementById("driveMode").innerText = "Drive Mode: " + value; 
+    document.getElementById("driveMode").innerText = value; 
 })
 COB.setListener(COB_KEY.matchTime, value => { 
     let format = ":";
     if (Math.trunc(value - (Math.trunc(value / 60) * 60)) < 10) format = ":0";
 
-    document.getElementById("matchTime").innerText = "Time Left: " + (Math.trunc(value / 60)).toString() + format + Math.trunc(value - (Math.trunc(value / 60) * 60)).toString(); //displays time in Min:Sec format
+    document.getElementById("timer").innerText = (Math.trunc(value / 60)).toString() + format + Math.trunc(value - (Math.trunc(value / 60) * 60)).toString(); //displays time in Min:Sec format
 
     let phase;
     if (value > 135) { 
         phase = "Autonomous";
     } else if (value > 30) {
         phase = "Tele-Op";
-    } else if (value < 30) {
+    } else if (value <= 30) {
         phase = "Endgame";
     } else 
         phase = "No Game Ongoing"
 
-    document.getElementById("matchPhase").innerText = "Phase: " + phase;
+    document.getElementById("matchPhase").innerText = phase;
 })
 
 COB.setListener(COB_KEY.matchColor, value => { 
     if(value) {
-        document.getElementById("matchColor").innerText = "Team Color: Red";
         document.getElementById("arrow").src = "./images/RedArrow.png"
     } else {
-        document.getElementById("matchColor").innerText = "Team Color: Blue";
         document.getElementById("arrow").src = "./images/BlueArrow.png"
     }
 })
@@ -85,7 +83,6 @@ function initAll(){
     COB.set(COB_KEY.driveMode, 'Robot Oriented');
     COB.set(COB_KEY.matchTime, 150);
     COB.set(COB_KEY.matchPhase, "Phase: Match Not Started");
-    COB.set(COB_KEY.matchColor, "Team Color: Unknown");
 }
 
 

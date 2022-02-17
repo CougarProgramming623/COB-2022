@@ -3,7 +3,7 @@ const ipc = ipcMain;
 
 let win;
 let screenWidth = 1280;
-let screenHeight = 400;
+let screenHeight = 425;
 
 function createWindow () {
     win = new BrowserWindow({
