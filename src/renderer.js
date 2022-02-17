@@ -38,10 +38,12 @@ const COB_KEY = {
 COB.setListener(COB_KEY.bar, value => { document.getElementById("bar-value").innerText = value; })*/
 
 COB.setListener(COB_KEY.robotAngle, value => { 
+    document.getElementById("robotAngle").innerText = Math.trunc(value).toString() + "°" ; 
     document.getElementById("arrow").style.transform = 'rotate(' + value + 'deg)'; 
 })
 COB.setListener(COB_KEY.flywheelRPM, value => { 
-    document.getElementById("flywheelRPM").innerText = "Flywheel RPM: " + value; 
+    document.getElementById("flywheelRPM").innerText = value.toString() + " RPM"; 
+    document.getElementById("flywheelDisplay").style.filter = "brightness(" + value + "%)"; 
 })
 COB.setListener(COB_KEY.driveMode, value => { 
     document.getElementById("driveMode").innerText = "Drive Mode: " + value; 

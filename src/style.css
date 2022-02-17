@@ -1,13 +1,36 @@
-#navX-reset{
-    width: 100px;
-    height: 100px;
-    margin: 30px;
-    background-color: red;
+div.angle {
+    display: inline-block;
+    position: fixed;
+    left:50px;
+    top:20px;
+    text-align: center;
+}
+#robotAngle {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40pt;
 }
 
-#drive-mode{
+div.flywheel {
+    display: inline-block;
+    position: fixed;
+    left:300px;
+    top:20px;
     text-align: center;
-    font-size: larger;
-    font-family: 'Courier New', Courier, monospace;
-    margin: 30px;
+}
+#flywheelRPM {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40pt;
+}
+
+#driveMode {
+    position: fixed;
+}
+#matchTime {
+    position: fixed;
+}
+#matchPhase {
+    position: fixed;
+}
+#matchColor {
+    position: fixed;
 }
