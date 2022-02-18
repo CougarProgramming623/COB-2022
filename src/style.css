@@ -1,7 +1,7 @@
 div.angle {
     display: inline-block;
     position: fixed;
-    left:300px;
+    left:250px;
     top:20px;
     text-align: center;
 }
@@ -18,21 +18,19 @@ div.angle {
 div.flywheel {
     display: inline-block;
     position: fixed;
-    left:550px;
-    top:20px;
+    left:450px;
+    top: 0px;
     text-align: center;
 }
 #flywheelRPM {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 40pt;
 }
-
 #matchTime {
     position: fixed;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 30pt;
     top: 15px;
-    
 }
 #timer {
     position: fixed;

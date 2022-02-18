@@ -1,6 +1,6 @@
 console.log("Started renderer.js")
 
-ipc.send('connect', "127.0.0.1"); // connect to robot: 10.6.23.2 || self: 127.0.0.1
+ipc.send('connect', "10.6.23.2"); // connect to robot: 10.6.23.2 || self: 127.0.0.1
 
 const COB = {
     set: function(cobKey, value) {
@@ -22,11 +22,9 @@ NetworkTables.getValue()
 // rapid react specific code follows
 
 const COB_KEY = {
-    foo: "/COB/foo",
-    bar: "/COB/bar",
     navXReset: "/COB/navXReset",
     robotAngle: "/COB/robotAngle",
-    flywheelRPM: "/COB/flywheelRPM",
+    flywheelSpeed: "/COB/flywheelSpeed",
     driveMode: "/COB/driveMode",
     matchTime: "/COB/matchTime",
     matchColor: "/FMSInfo/IsRedAlliance"
@@ -41,9 +39,13 @@ COB.setListener(COB_KEY.robotAngle, value => {
     document.getElementById("robotAngle").innerText = Math.trunc(value).toString() + "°" ; 
     document.getElementById("arrow").style.transform = 'rotate(' + value + 'deg)'; 
 })
-COB.setListener(COB_KEY.flywheelRPM, value => { 
-    document.getElementById("flywheelRPM").innerText = value.toString() + " RPM"; 
-    document.getElementById("flywheelDisplay").style.filter = "brightness(" + (value / 120) + "%)"; 
+
+let deg = 0;
+COB.setListener(COB_KEY.flywheelSpeed, value => { 
+    deg = deg + value;
+    document.getElementById("flywheelRPM").innerText = Math.trunc(value).toString() + " RPM";
+    document.getElementById("flywheelDisplay").style.transform = 'rotate(' + ((deg / 10) % 360) + 'deg)'; 
+    
 })
 COB.setListener(COB_KEY.driveMode, value => { 
     document.getElementById("driveMode").innerText = value; 
@@ -61,8 +63,7 @@ COB.setListener(COB_KEY.matchTime, value => {
         phase = "Tele-Op";
     } else if (value <= 30) {
         phase = "Endgame";
-    } else 
-        phase = "No Game Ongoing"
+    }
 
     document.getElementById("matchPhase").innerText = phase;
 })
@@ -79,7 +80,7 @@ COB.setListener(COB_KEY.matchColor, value => {
 function initAll(){
     COB.set(COB_KEY.navXReset, false);
     COB.set(COB_KEY.robotAngle, 0);
-    COB.set(COB_KEY.flywheelRPM, 0);
+    COB.set(COB_KEY.flywheelSpeed, 0);
     COB.set(COB_KEY.driveMode, 'Robot Oriented');
     COB.set(COB_KEY.matchTime, 150);
     COB.set(COB_KEY.matchPhase, "Phase: Match Not Started");
