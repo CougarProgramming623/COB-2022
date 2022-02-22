@@ -10,7 +10,7 @@
   },
   "NetworkTables Settings": {
     "listenAddress": "127.0.0.1",
-    "mode": "Server",
+    "mode": "Client",
     "serverTeam": "623"
   }
 }

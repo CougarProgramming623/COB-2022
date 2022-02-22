@@ -1,6 +1,6 @@
 console.log("Started renderer.js")
 
-ipc.send('connect', "127.0.0.1"); // connect to robot: 10.6.23.2 || self: 127.0.0.1
+ipc.send('connect', "10.6.23.2"); // connect to robot: 10.6.23.2 || self: 127.0.0.1
 
 const COB = {
     set: function(cobKey, value) {
@@ -24,7 +24,7 @@ NetworkTables.getValue()
 const COB_KEY = {
     navXReset: "/COB/navXReset",
     robotAngle: "/COB/robotAngle",
-    flywheelSpeed: "/COB/flywheelSpeed",
+    flywheelRPM: "/COB/flywheelRPM",
     driveMode: "/COB/driveMode",
     matchTime: "/COB/matchTime",
     matchColor: "/FMSInfo/IsRedAlliance"
@@ -41,7 +41,7 @@ COB.setListener(COB_KEY.robotAngle, value => {
 })
 
 let deg = 0;
-COB.setListener(COB_KEY.flywheelSpeed, value => { 
+COB.setListener(COB_KEY.flywheelRPM, value => { 
     deg = deg + value;
     document.getElementById("flywheelRPM").innerText = Math.trunc(value).toString() + " RPM";
     document.getElementById("flywheelDisplay").style.transform = 'rotate(' + ((deg / 10) % 360) + 'deg)'; 
@@ -80,7 +80,7 @@ COB.setListener(COB_KEY.matchColor, value => {
 function initAll(){
     COB.set(COB_KEY.navXReset, false);
     COB.set(COB_KEY.robotAngle, 0);
-    COB.set(COB_KEY.flywheelSpeed, 0);
+    COB.set(COB_KEY.flywheelRPM, 0);
     COB.set(COB_KEY.driveMode, 'Robot Oriented');
     COB.set(COB_KEY.matchTime, 150);
     COB.set(COB_KEY.matchPhase, "Phase: Match Not Started");
