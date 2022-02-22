@@ -17,7 +17,7 @@ function createWindow () {
 
       x: 0,
       y: 0,
-      backgroundColor: "#dfc9de",
+      backgroundColor: "#FFDF94",
       center: true,
       webPreferences: {
           nodeIntegration: true,

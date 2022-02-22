@@ -1,6 +1,6 @@
 console.log("Started renderer.js")
 
-ipc.send('connect', "10.6.23.2"); // connect to robot: 10.6.23.2 || self: 127.0.0.1
+ipc.send('connect', "127.0.0.1"); // connect to robot: 10.6.23.2 || self: 127.0.0.1
 
 const COB = {
     set: function(cobKey, value) {

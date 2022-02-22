@@ -1,7 +1,34 @@
+div.title{
+    display: inline-block;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 80px;
+}
+#title1{
+    position: fixed;
+    color: #800020;
+    top: -35px;
+}
+#title2{
+    position: fixed;
+    font-size: 5px;
+    top: 132px;
+    left: 20px;
+    color: #FEC94A;
+}
+#title3{
+    position: fixed;
+    color: rgb(230, 180, 35);
+    top: 50px;
+}
+#title4{
+    position: fixed;
+    color: gray;
+    top: 125px;
+}
 div.angle {
     display: inline-block;
     position: fixed;
-    left:250px;
+    left:550px;
     top:20px;
     text-align: center;
 }
@@ -9,16 +36,17 @@ div.angle {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 40pt;
 }
-
 #driveMode {
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: fixed;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15pt;
+    left: 300px;
+    top: 250px;
 }
-
 div.flywheel {
     display: inline-block;
     position: fixed;
-    left:450px;
+    left: 750px;
     top: 0px;
     text-align: center;
 }
@@ -31,12 +59,14 @@ div.flywheel {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 30pt;
     top: 15px;
+    left: 300px;
 }
 #timer {
     position: fixed;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 80pt;
     top: 0px;
+    left: 300px;
 }
 
 #matchPhase {
@@ -44,4 +74,5 @@ div.flywheel {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20pt;
     top: 205px;
+    left: 300px;
 }
