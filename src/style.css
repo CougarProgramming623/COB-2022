@@ -10,17 +10,10 @@ div.title{
 }
 #title2{
     position: fixed;
-    font-size: 5px;
-    top: 132px;
-    left: 20px;
-    color: #FEC94A;
-}
-#title3{
-    position: fixed;
     color: rgb(230, 180, 35);
     top: 50px;
 }
-#title4{
+#title3{
     position: fixed;
     color: gray;
     top: 125px;
