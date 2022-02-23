@@ -69,3 +69,11 @@ div.flywheel {
     top: 205px;
     left: 300px;
 }
+
+#ticks {
+    position: fixed;
+    text-align: center;
+    font-size: 20px;
+    left: 1200px;
+    top: 375px;
+}

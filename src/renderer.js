@@ -27,7 +27,8 @@ const COB_KEY = {
     flywheelRPM: "/COB/flywheelRPM",
     driveMode: "/COB/driveMode",
     matchTime: "/COB/matchTime",
-    matchColor: "/FMSInfo/IsRedAlliance"
+    matchColor: "/FMSInfo/IsRedAlliance",
+    ticks: "/COB/ticks"
 } // put all the keys here, and match the schema with the COB.h file in the codebase
 
 
@@ -76,6 +77,10 @@ COB.setListener(COB_KEY.matchColor, value => {
     }
 })
 
+COB.setListener(COB_KEY.ticks, value => { 
+    document.getElementById("ticks").innerText = value;
+})
+
 
 function initAll(){
     COB.set(COB_KEY.navXReset, false);
@@ -84,6 +89,7 @@ function initAll(){
     COB.set(COB_KEY.driveMode, 'Robot Oriented');
     COB.set(COB_KEY.matchTime, 150);
     COB.set(COB_KEY.matchPhase, "Phase: Match Not Started");
+    COB.set(COB_KEY.ticks, 0);
 }
 
 
